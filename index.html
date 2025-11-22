@@ -1,0 +1,57 @@
+<!-- This file will be renamed to index.html -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Removed top-nav Know Your Counselors link -->
+    <!-- Tab Bar Navigation -->
+    <div class="nav-dropdown">
+        <button id="navToggle" class="nav-icon" aria-label="Open menu">
+            <span class="nav-hamburger"></span>
+        </button>
+        <div id="navOverlay" class="nav-overlay">
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Assessment</a>
+                <a href="counselors.html" class="nav-link">Know Your Counselors</a>
+                <a href="consultation.html" class="nav-link">Book a Consultation</a>
+            </div>
+        </div>
+    </div>
+    <div class="container overlay">
+        <h1>Instructions</h1>
+        <div style="font-size:1.08rem;line-height:1.7;color:#333;margin-bottom:32px;text-align:center;">
+            <p>Welcome to the Personality Test!</p>
+            <ul style="text-align:left;max-width:420px;margin:0 auto 24px auto;padding-left:20px;">
+                <li>Read each word or phrase carefully.</li>
+                <li>Select how much each word describes you using the four options.</li>
+                <li>There are no right or wrong answers—be honest and spontaneous.</li>
+                <li>After you finish, you'll see your result and can book a consultation.</li>
+            </ul>
+            <p>Click the button below to begin the test.</p>
+        </div>
+        <a href="test.html" class="button primary" style="margin-top:18px;">Start Test</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.getElementById('navToggle');
+            const navOverlay = document.getElementById('navOverlay');
+            navToggle.addEventListener('click', () => {
+                navOverlay.classList.toggle('active');
+            });
+            navOverlay.addEventListener('click', (e) => {
+                if (e.target === navOverlay) navOverlay.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

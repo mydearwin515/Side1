@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.getElementById('navToggle');
+            const navOverlay = document.getElementById('navOverlay');
+            navToggle.addEventListener('click', () => {
+                navOverlay.classList.toggle('active');
+            });
+            navOverlay.addEventListener('click', (e) => {
+                if (e.target === navOverlay) navOverlay.classList.remove('active');
+            });
+        });
+    </script>
+    <!-- Tab Bar Navigation -->
+    <div class="nav-dropdown">
+        <button id="navToggle" class="nav-icon" aria-label="Open menu">
+            <span class="nav-hamburger"></span>
+        </button>
+        <div id="navOverlay" class="nav-overlay">
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Assessment</a>
+                <a href="counselors.html" class="nav-link">Know Your Counselors</a>
+                <a href="consultation.html" class="nav-link active">Book a Consultation</a>
+            </div>
+        </div>
+    </div>
+    <div class="container overlay" style="margin-top:72px;">
+        <h1>Book a Consultation</h1>
+        <p>Thank you for taking the test! Please fill out the form below to book a consultation.</p>
+        <form>
+            <!-- Calendly Inline Widget -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/mydearwin515/friends-and-family"
+                style="min-width:320px;height:630px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- End Calendly Widget -->
+    </div>
+</body>
+
+</html>

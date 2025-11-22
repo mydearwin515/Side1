@@ -1,0 +1,305 @@
+/* Carousel styles for counselors page */
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto 18px auto;
+    position: relative;
+    min-height: 180px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
+    will-change: transform;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 18px 12px;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+    .carousel-wrapper {
+        min-height: 120px;
+    }
+
+    .carousel-slide {
+        padding: 12px 2px;
+    }
+}
+
+/* Counselors page animation and section styles */
+.mentor-section {
+    background: rgba(249, 246, 240, 0.7);
+    border-radius: 14px;
+    padding: 18px 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.counselor-img {
+    box-shadow: 0 8px 32px rgba(60, 60, 60, 0.10);
+    border-radius: 18px;
+}
+
+/* Tab Bar Navigation */
+/* Hamburger Dropdown Navigation */
+/* Hamburger Dropdown Navigation - refined for icon-only top left */
+.nav-dropdown {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+}
+
+.nav-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.nav-hamburger {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    position: relative;
+}
+
+.nav-hamburger::before,
+.nav-hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 28px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: transform 0.18s;
+}
+
+.nav-hamburger::before {
+    top: -8px;
+}
+
+.nav-hamburger::after {
+    top: 8px;
+}
+
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(40, 40, 40, 0.32);
+    z-index: 199;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.nav-overlay.active {
+    display: flex !important;
+}
+
+.nav-menu {
+    margin: 32px 0 0 32px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.nav-link {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.08rem;
+    color: #333;
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.18s, border-color 0.18s, background 0.18s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--ink);
+    border-bottom: 2px solid var(--ink);
+    background: #f4efe7;
+}
+
+/* Intro page flex layout */
+.intro-flex {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.intro-image {
+    flex: 0 0 320px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .intro-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+    .intro-image {
+        flex: 0 0 auto;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================
+   S O Y A   •  B E I G E   M O D E R N  U I
+   ============================================ */
+
+:root {
+    --bg: #d9cbc0;
+    /* warm beige */
+    --bg-light: #e8ded5;
+    /* pale beige */
+    --ink: #1a1a1a;
+    /* deep black */
+    --subtle: #6e665e;
+    /* muted brown-grey */
+    --card-bg: #f4eee8;
+    /* cream card */
+    --border: rgba(0, 0, 0, 0.18);
+    --radius: 26px;
+    --transition: 0.22s ease;
+}
+
+/* Page background --------------------------------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    color: var(--ink);
+}
+
+/* Center Card ------------------------------------------------------------- */
+
+.overlay {
+    width: 100%;
+    max-width: 520px;
+    background: var(--card-bg);
+    padding: 60px 48px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: 0 15px 52px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+/* Headings --------------------------------------------------------------- */
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 36px;
+    color: var(--ink);
+}
+
+/* Question Text ---------------------------------------------------------- */
+
+#questionBox p {
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+}
+
+/* Progress --------------------------------------------------------------- */
+
+#progress {
+    margin-top: 32px;
+    font-size: 0.85rem;
+    color: var(--subtle);
+    letter-spacing: 0.08em;
+}
+
+/* Buttons --------------------------------------------------------------- */
+
+.button,
+button {
+    width: 100%;
+    padding: 18px 0;
+    margin: 12px 0;
+    border-radius: 50px;
+    border: 1.5px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.button:hover,
+button:hover {
+    background: var(--ink);
+    color: var(--card-bg);
+    transform: translateY(-2px);
+}
+
+.button:active,
+button:active {
+    transform: translateY(0);
+}
+
+/* Mobile Responsiveness -------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .overlay {
+        padding: 32px 22px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #questionBox p {
+        font-size: 1.15rem;
+    }
+}

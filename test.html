@@ -1,0 +1,89 @@
+<button id="adminSkipAll"
+    style="position:fixed;top:16px;right:16px;z-index:999;background:rgba(255,255,255,0.7);color:#444;padding:6px 14px;border-radius:16px;border:1px solid #e0e0e0;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;font-size:0.98rem;opacity:0.85;transition:background 0.18s,box-shadow 0.18s;letter-spacing:0.01em;font-family:'Sora',sans-serif;font-weight:500;backdrop-filter:blur(2px);">Skip
+    All</button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Tiny Admin Skip All Button -->
+    <button id="adminSkipAll" title="Skip All"
+        style="position:fixed;top:16px;right:16px;z-index:999;width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,0.7);color:#444;box-shadow:0 2px 8px rgba(0,0,0,0.08);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0.85;transition:background 0.18s;backdrop-filter:blur(2px);"><span
+            style="font-size:1.2rem;">&#10003;</span></button>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.getElementById('navToggle');
+            const navOverlay = document.getElementById('navOverlay');
+            navToggle.addEventListener('click', () => {
+                navOverlay.classList.toggle('active');
+            });
+            navOverlay.addEventListener('click', (e) => {
+                if (e.target === navOverlay) navOverlay.classList.remove('active');
+            });
+        });
+    </script>
+    <!-- Tab Bar Navigation (only on test.html) -->
+    <div class="nav-dropdown">
+        <button id="navToggle" class="nav-icon" aria-label="Open menu">
+            <span class="nav-hamburger"></span>
+        </button>
+        <div id="navOverlay" class="nav-overlay">
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Assessment</a>
+                <a href="test.html" class="nav-link active">Personality Test</a>
+                <a href="counselors.html" class="nav-link">Know Your Counselors</a>
+                <a href="consultation.html" class="nav-link">Book a Consultation</a>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Skip All Button -->
+    <div class="container overlay" style="margin-top:72px;">
+        <h1>Personality Test</h1>
+        <div id="gameContainer">
+            <div id="questionBox"></div>
+            <div id="ratingButtons"></div>
+            <div id="progress"></div>
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+    <script type="module">
+        import { QUESTIONS } from './questions.js';
+        document.getElementById('adminSkipAll').onclick = function () {
+            const answers = Array(QUESTIONS.length).fill(3);
+            localStorage.setItem('personalityAnswers', JSON.stringify(answers));
+            window.testInProgress = false;
+            window.location.href = 'result.html';
+        };
+    </script>
+    <script type="module">
+        import { QUESTIONS } from './questions.js';
+        document.getElementById('adminSkipAll').onclick = function () {
+            // Fill all answers with '3' (Always like me)
+            const answers = Array(QUESTIONS.length).fill(3);
+            localStorage.setItem('personalityAnswers', JSON.stringify(answers));
+            window.testInProgress = false;
+            window.location.href = 'result.html';
+        };
+    </script>
+    <script>
+        // Show leave warning if user tries to leave before finishing the test
+        window.testInProgress = true;
+        window.addEventListener('beforeunload', function (e) {
+            if (window.testInProgress) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+</body>
+
+</html>

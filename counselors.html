@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your Counselors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.getElementById('navToggle');
+            const navOverlay = document.getElementById('navOverlay');
+            navToggle.addEventListener('click', () => {
+                navOverlay.classList.toggle('active');
+            });
+            navOverlay.addEventListener('click', (e) => {
+                if (e.target === navOverlay) navOverlay.classList.remove('active');
+            });
+        });
+    </script>
+    <!-- Tab Bar Navigation -->
+    <div class="nav-dropdown">
+        <button id="navToggle" class="nav-icon" aria-label="Open menu">
+            <span class="nav-hamburger"></span>
+        </button>
+        <div id="navOverlay" class="nav-overlay">
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Assessment</a>
+                <a href="counselors.html" class="nav-link active">Know Your Counselors</a>
+                <a href="consultation.html" class="nav-link">Book a Consultation</a>
+            </div>
+        </div>
+    </div>
+    <div class="container overlay" style="margin-top:72px;overflow:hidden;">
+        <img src="nghBsFfHNt4VCcbKhpNKRYryWPQ.webp" alt="Mentors" class="counselor-img"
+            style="width:100%;max-width:320px;display:block;margin:0 auto 32px auto;border-radius:18px;box-shadow:0 8px 32px rgba(60,60,60,0.10);">
+        <h1 style="margin-bottom:24px;text-align:center;">Know Your Counselors</h1>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <section class="mentor-section carousel-slide">
+                    <h2>Who We Are</h2>
+                    <p>My wife and I have dedicated ourselves to preparing the younger generation for marriage through
+                        coaching and mentoring.</p>
+                </section>
+                <section class="mentor-section carousel-slide">
+                    <h2>Our Story</h2>
+                    <p>With years of wisdom and experience, we both understand the challenges couples face today,
+                        especially as many in the newer generation lose sight of the foundational values rooted in a
+                        Christian Judeo worldview. Recognizing this growing need, we created this workbook that not only
+                        equips couples for a strong and lasting marriage but also serves as a guide for those who are
+                        already married but struggling with challenges.</p>
+                </section>
+                <section class="mentor-section carousel-slide">
+                    <h2>Our Values</h2>
+                    <ul style="margin-bottom:18px;padding-left:18px;color:#7b7468;">
+                        <li>Restoring the biblical foundation of marriage</li>
+                        <li>Emphasizing commitment, love, and the roles God designed</li>
+                        <li>Walking alongside couples with faith, wisdom, and practical tools</li>
+                        <li>Building marriages on the solid rock of faith</li>
+                        <li>Offering hope and direction for a fulfilling and lasting marriage</li>
+                    </ul>
+                </section>
+                <section class="mentor-section carousel-slide">
+                    <h2>Our Mission</h2>
+                    <p>Whether couples are just beginning their journey or seeking to restore what has been broken, our
+                        guidance and biblical wisdom offer hope and direction for a fulfilling and lasting marriage.</p>
+                </section>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button id="prevSlide" class="button" aria-label="Previous">&#8592;</button>
+            <button id="nextSlide" class="button" aria-label="Next">&#8594;</button>
+        </div>
+    </div>
+    <script>
+        // Carousel logic
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        let currentIndex = 0;
+        let autoRotate;
+
+        function updateCarousel(index) {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? 1 : 0.5;
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel(currentIndex);
+            resetAutoRotate();
+        }
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel(currentIndex);
+            resetAutoRotate();
+        }
+        function resetAutoRotate() {
+            clearInterval(autoRotate);
+            autoRotate = setInterval(nextSlide, 4000);
+        }
+
+        document.getElementById('nextSlide').onclick = nextSlide;
+        document.getElementById('prevSlide').onclick = prevSlide;
+
+        updateCarousel(currentIndex);
+        resetAutoRotate();
+        window.addEventListener('focus', resetAutoRotate);
+        window.addEventListener('blur', () => clearInterval(autoRotate));
+    </script>
+</body>
+
+</html>
